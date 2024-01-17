@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DVFMESQL.opendata_gis"
+  DTS:DTSID="{EFCD1019-DCB4-4ADD-BF91-C8208654A946}"
+  DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::Opendata_GIS_ConnectionString]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=PRDCETL-SQL01;Initial Catalog=opendata_gis;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-{EFCD1019-DCB4-4ADD-BF91-C8208654A946}DVFMESQL.opendata_gis;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

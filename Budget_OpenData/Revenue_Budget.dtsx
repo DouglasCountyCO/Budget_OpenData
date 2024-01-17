@@ -1,0 +1,2377 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/23/2015 10:23:34 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DAWABI-JG"
+  DTS:CreatorName="DAWABI-JG\Jack"
+  DTS:Description="SSIS Package Template - Created by Datalere - www.Datalere.com"
+  DTS:DTSID="{4D0BACD0-F9C9-463C-B6ED-725E58F3A241}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Revenue_Budget"
+  DTS:PackageType="5"
+  DTS:VersionBuild="112"
+  DTS:VersionGUID="{D3D18384-2EC8-453B-AD12-2580ECAEB3C0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{B773FE38-8B33-43B9-BD74-71566C1E8A01}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::FolderLocationValues]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="capital_budget2020-10-27.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="fy"
+              DTS:DTSID="{7714327D-CDF3-4B3F-A274-48B19EF2ABE2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="fund_description"
+              DTS:DTSID="{87362F06-9B3C-4039-A89F-0CF7119D619C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="department_description"
+              DTS:DTSID="{B0495E25-B251-4E14-9732-E9F94A709658}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="divison_description"
+              DTS:DTSID="{41BACF6D-07FF-4CBD-9D1D-033A450C9700}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="category_type"
+              DTS:DTSID="{AB145D92-A07A-4214-A6A7-38B3D30A3D28}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="line_item"
+              DTS:DTSID="{FF417C7D-779B-469A-B178-BEE451E86365}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="14"
+              DTS:DataScale="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="adopted_budget"
+              DTS:DTSID="{CE3A4BC5-2BCB-49B2-A06E-CA0F50CAA5B3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="14"
+              DTS:DataScale="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="amended_budget"
+              DTS:DTSID="{E0E907EA-73B4-4582-B49E-4757016A57B6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="14"
+              DTS:DataScale="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="actuals"
+              DTS:DTSID="{FAA9091B-B9B1-4629-A78C-A1402A57DC5B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="14"
+              DTS:DataScale="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="variance"
+              DTS:DTSID="{9D681D45-CC6E-4E77-B8D5-3857DAAF5003}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{75A7496D-BDD4-4134-AC67-999F3A543139}"
+      DTS:ObjectName="LoadType">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">FullLoad</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{C4201675-BD88-4907-9CB1-95320E79A4EF}"
+      DTS:ObjectName="ParentBatchExecutionKey">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{39F21207-D37C-44A7-BE5E-F577922C1AB4}"
+      DTS:ObjectName="ParentPkgExecutionKey">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FC241609-EE87-409E-8853-01BC809B1CB6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DeletedRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1745DAA9-2768-4ED8-B921-1DA237C373B2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DMSchema"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="8">Budget</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3A4E78CD-8A6B-46FF-8DEA-8763AA000260}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ErrorRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EC8CACA7-66E0-45C0-8AA6-41C443E9094B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExpiredSCD2RowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{062B4216-2D23-473C-BF92-FA7091E45536}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtractSourceRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{58A9D7F7-3775-4D5B-B4C0-0B2042BD64B0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtractTargetRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2C42DF9E-93DE-47A5-904D-2051065E55F8}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FilePathAndName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8F41EFBB-5183-419F-BFDF-3FDCEF7C6EBC}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::FolderLocation] &#xA;+ &quot;Archive\\&quot;&#xA;+  @[System::PackageName]&#xA;+ &quot;_&quot; &#xA;+ (DT_STR, 4, 1252) DATEPART(&quot;yyyy&quot; , GETDATE())&#xA;+ RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;mm&quot; , GETDATE()), 2)&#xA;+ RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;dd&quot; , GETDATE()), 2)&#xA;+ &quot;.csv&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FilePathAndNameArchive">
+      <DTS:VariableValue
+        DTS:DataType="8">\\PRDCETL-MST01\OpenData\Archive\Revenue_Budget_20240116.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FFD50A8D-2CD9-4563-AC84-1DD3F8C4D995}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FolderLocationValues">
+      <DTS:VariableValue
+        DTS:DataType="8">capital_budget2020-10-27.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{774CF273-2580-40A8-B2E0-5B0E332E26DC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="InvalidRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3E31E0F5-1A14-4392-8E0A-B542FA668F44}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoadCheckStatus">
+      <DTS:VariableValue
+        DTS:DataType="8">LoadNow</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B86441E8-7135-4594-AAEB-B55D84B690B6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoadStartDT">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{02E73799-E0D1-4420-AF8D-870F20F75984}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoadStopDT">
+      <DTS:VariableValue
+        DTS:DataType="7">12/31/2099</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{078E84E1-EDF4-4559-AD77-C40432B3BFE1}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::LoadType]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoadType">
+      <DTS:VariableValue
+        DTS:DataType="8">FullLoad</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8701392D-BB7E-4787-B0CA-D040C61B694E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NewRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A2B7881E-DBA6-4668-82DA-409607717A66}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NewSCD2RowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6B1926DC-1274-40AB-9E32-408D768015E0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PkgExecutionKey">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7838DF6A-13F1-4C48-AA92-A35C10C0A7A9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQLGetTableInitialRowCount">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5D5AC54C-76FD-47AB-96EE-1D530A745ED6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableExecutionKey">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{85F8E858-7830-4F73-AA71-056E8AB32254}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableFinalRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3E3DB271-16FA-467A-B5F9-B67DD3649544}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableInitialRowCnt"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{49FB4397-B819-4CB1-B999-6F164A8F89A4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="UnchangedRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B32F9868-6AEA-44ED-A864-F7F1A4BD614D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="UpdatedSCD1RowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FELC Get Files for Revenue_Budget"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{1E8AA693-E884-4B49-BBEF-6DE008E25106}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FELC Get Files for Revenue_Budget">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{8765B3F2-5585-49E4-9C4C-1CB1267A0F3B}"
+        DTS:ObjectName="{8765B3F2-5585-49E4-9C4C-1CB1267A0F3B}">
+        <DTS:PropertyExpression
+          DTS:Name="Directory">@[$Project::FolderLocation]</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="\\PRDCETL-MST01\OpenData\" />
+            <FEFEProperty
+              FileSpec="*revenue*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="Name">"FELC Get Files for " +  @[System::PackageName]</DTS:PropertyExpression>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{A5F6F4C7-A684-40B9-A87E-36FF2B6899F6}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DF Load File for Revenue_Budget"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="Name">"DF Load File for " +  @[System::PackageName]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="FF Get Data"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[fy]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[fy]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[fy]"
+                          name="fy"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[fund_description]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[fund_description]"
+                          length="100"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[fund_description]"
+                          name="fund_description"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[category_type]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[category_type]"
+                          length="100"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[category_type]"
+                          name="category_type"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[line_item]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[line_item]"
+                          length="100"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[line_item]"
+                          name="line_item"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[amended_budget]"
+                          dataType="decimal"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[amended_budget]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[amended_budget]"
+                          name="amended_budget"
+                          scale="19"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[adopted_budget]"
+                          dataType="decimal"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[adopted_budget]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[adopted_budget]"
+                          name="adopted_budget"
+                          scale="19"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[actuals]"
+                          dataType="decimal"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[actuals]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[actuals]"
+                          name="actuals"
+                          scale="19"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[variance]"
+                          dataType="decimal"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[variance]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[variance]"
+                          name="variance"
+                          scale="19"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[department_description]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[department_description]"
+                          length="100"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[department_description]"
+                          name="department_description"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[divison_description]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[divison_description]"
+                          length="100"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[divison_description]"
+                          name="divison_description"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[fy]"
+                          dataType="i2"
+                          name="fy" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[fund_description]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="fund_description" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[category_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="category_type" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[line_item]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="line_item" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[amended_budget]"
+                          dataType="decimal"
+                          name="amended_budget"
+                          scale="19" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[adopted_budget]"
+                          dataType="decimal"
+                          name="adopted_budget"
+                          scale="19" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[actuals]"
+                          dataType="decimal"
+                          name="actuals"
+                          scale="19" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[variance]"
+                          dataType="decimal"
+                          name="variance"
+                          scale="19" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[department_description]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="department_description" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].ExternalColumns[divison_description]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="divison_description" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE_Dest Load Data"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Budget].[Revenue_Budget]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Connections[OleDbConnection]"
+                      connectionManagerID="{EFCD1019-DCB4-4ADD-BF91-C8208654A946}:invalid"
+                      connectionManagerRefId="{EFCD1019-DCB4-4ADD-BF91-C8208654A946}:invalid"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].Columns[category_type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="category_type"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Category_Type]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[category_type]" />
+                        <inputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].Columns[line_item]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="line_item"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Line_Item]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[line_item]" />
+                        <inputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].Columns[amended_budget]"
+                          cachedDataType="decimal"
+                          cachedName="amended_budget"
+                          cachedScale="19"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Amended_Budget]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[amended_budget]" />
+                        <inputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].Columns[adopted_budget]"
+                          cachedDataType="decimal"
+                          cachedName="adopted_budget"
+                          cachedScale="19"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Adopted_Budget]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[adopted_budget]" />
+                        <inputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].Columns[actuals]"
+                          cachedDataType="decimal"
+                          cachedName="actuals"
+                          cachedScale="19"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Actuals]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[actuals]" />
+                        <inputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].Columns[variance]"
+                          cachedDataType="decimal"
+                          cachedName="variance"
+                          cachedScale="19"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Variance]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[variance]" />
+                        <inputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].Columns[fy]"
+                          cachedDataType="i2"
+                          cachedName="fy"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal_Year]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[fy]" />
+                        <inputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].Columns[fund_description]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="fund_description"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Fund]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[fund_description]" />
+                        <inputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].Columns[department_description]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="department_description"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[department_description]" />
+                        <inputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].Columns[divison_description]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="divison_description"
+                          externalMetadataColumnId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Divison]"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output].Columns[divison_description]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                          dataType="i4"
+                          name="ID" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal_Year]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Fiscal_Year" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Fund]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Fund" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Department" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Category_Type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Category_Type" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Line_Item]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Line_Item" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Adopted_Budget]"
+                          dataType="numeric"
+                          name="Adopted_Budget"
+                          precision="19"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Amended_Budget]"
+                          dataType="numeric"
+                          name="Amended_Budget"
+                          precision="19"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Actuals]"
+                          dataType="numeric"
+                          name="Actuals"
+                          precision="19"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Variance]"
+                          dataType="numeric"
+                          name="Variance"
+                          precision="19"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input].ExternalColumns[Divison]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Divison" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::ExtractSourceRowCnt</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget.Paths[Flat File Source Output]"
+                  endId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\Row Count.Inputs[Row Count Input 1]"
+                  name="Flat File Source Output"
+                  startId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data.Outputs[Flat File Source Output]" />
+                <path
+                  refId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget.Paths[Row Count Output 1]"
+                  endId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\FELC Get Files for Revenue_Budget\FST Copy File to Archive for Revenue_Budget"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{DDB26A50-A293-4AA9-A374-EBE2A113DE72}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="FST Copy File to Archive for Revenue_Budget"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="Name">"FST Copy File to Archive for " +  @[System::PackageName]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::FolderLocationValues"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::FilePathAndNameArchive"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\FELC Get Files for Revenue_Budget\FST Delete File for Revenue_Budget"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{38849824-5C80-4127-9095-23087C85C0A6}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="FST Delete File for Revenue_Budget"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="Name">"FST Delete File for " +  @[System::PackageName]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="DeleteFile"
+              TaskSourcePath="User::FolderLocationValues"
+              TaskIsSourceVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\FELC Get Files for Revenue_Budget\SQL Truncate Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{793fbb63-ce96-4d0e-b0a5-0d60373ad91f}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Truncate Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{EFCD1019-DCB4-4ADD-BF91-C8208654A946}"
+              SQLTask:SqlStatementSource="truncate table [Budget].[Revenue_Budget]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\FELC Get Files for Revenue_Budget.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{1BA417B1-26FD-49FE-B4D7-A6091FF84DBB}"
+          DTS:From="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\FELC Get Files for Revenue_Budget\FST Copy File to Archive for Revenue_Budget" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\FELC Get Files for Revenue_Budget.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{2422B87A-1F68-4F5D-A480-A486E88F6126}"
+          DTS:From="Package\FELC Get Files for Revenue_Budget\FST Copy File to Archive for Revenue_Budget"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\FELC Get Files for Revenue_Budget\FST Delete File for Revenue_Budget" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\FELC Get Files for Revenue_Budget.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{B939A9F4-5B9A-473C-ABD9-79824E0BFE25}"
+          DTS:From="Package\FELC Get Files for Revenue_Budget\SQL Truncate Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{02B98D47-87E3-425A-AB1A-60D99ECBDDFA}"
+          DTS:ObjectName="{02B98D47-87E3-425A-AB1A-60D99ECBDDFA}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::FolderLocationValues" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQC Post Load Process"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{1DB36148-9F66-49F8-A3C3-411D1783F8B6}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQC Post Load Process">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="Disable">@[$Project::DisableLogging]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="DisableEventHandlers">@[$Project::DisableLogging]</DTS:PropertyExpression>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Post Load Process\SQL Get Table Final Row Cnt"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{24BAEE2F-737B-4673-8D87-78907CDF1FDA}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Get Table Final Row Cnt"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{EFCD1019-DCB4-4ADD-BF91-C8208654A946}"
+              SQLTask:SqlStatementSource="declare&#x9;@DWSchema&#x9;varchar(100)&#xA;&#x9;, @PkgName&#x9;varchar(100)&#xA;&#x9;, @SQL&#x9;&#x9;varchar(2000)&#xA;&#xA;select&#x9;@DWSchema&#x9;=&#x9;?&#xA;&#x9;, @PkgName&#x9;=&#x9;?&#xA;&#xA;set&#x9;@SQL&#x9;= 'select count(*) from ' + @DWSchema + '.' + @PkgName&#xA;&#xA;exec (@SQL)"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::TableFinalRowCnt" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::DMSchema"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Post Load Process\SQL Update Pkg Execution"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2E69C4DA-1A04-4F54-A517-891E27384856}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Pkg Execution"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="DECLARE @Now&#x9;datetime&#xA;SELECT @Now&#x9;= GETDATE()&#xA;&#xA;exec [Audit].[PkgExecutionUpdate]&#xA;@PkgExecutionKey=?&#x9;--&#x9;int&#xA;, @ExecStopDT=@Now&#x9;--&#x9;datetime&#xA;, @Status='Succeeded'&#x9;--&#x9;varchar(25)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PkgExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Post Load Process\SQL Update Table Execution"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{532D7C6D-E8D7-40E1-9FCD-C01D5CB2E4BB}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Table Execution"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="DECLARE @Now&#x9;datetime&#xA;SELECT @Now&#x9;= GETDATE()&#xA;&#xA;EXEC [Audit].[TableExecutionUpdate]&#xA;@TableExecutionKey=?&#x9;--&#x9;int&#xA;, @TableFinalRowCnt=?&#x9;--&#x9;int&#xA;, @ExtractSourceRowCnt=?&#x9;--&#x9;int&#xA;, @ExtractTargetRowCnt=?&#x9;--&#x9;int&#xA;, @UnchangedRowCnt=?&#x9;--&#x9;int&#xA;, @NewRowCnt=?&#x9;&#x9;--&#x9;int&#xA;, @DeletedRowCnt=?&#x9;--&#x9;int&#xA;, @UpdatedSCD1RowCnt=?&#x9;--&#x9;int&#xA;, @ExpiredSCD2RowCnt=?&#x9;--&#x9;int&#xA;, @NewSCD2RowCnt=?&#x9;--&#x9;int&#xA;, @InvalidRowCnt=?&#x9;--&#x9;int&#xA;, @ErrorRowCnt=?&#x9;&#x9;--&#x9;int&#xA;, @ExecStopDT=@Now&#x9;--&#x9;datetime&#xA;, @Status='Succeeded'&#x9;--&#x9;varchar(25)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::TableExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::TableFinalRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::ExtractSourceRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::ExtractTargetRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="User::UnchangedRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="User::NewRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="User::DeletedRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="7"
+                SQLTask:DtsVariableName="User::UpdatedSCD1RowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="8"
+                SQLTask:DtsVariableName="User::ExpiredSCD2RowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="9"
+                SQLTask:DtsVariableName="User::NewSCD2RowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="10"
+                SQLTask:DtsVariableName="User::InvalidRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="11"
+                SQLTask:DtsVariableName="User::ErrorRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC Post Load Process.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{BA4796EC-BD40-4EB0-833F-C5E3562C5C65}"
+          DTS:From="Package\SEQC Post Load Process\SQL Get Table Final Row Cnt"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQC Post Load Process\SQL Update Table Execution" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC Post Load Process.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{0F834623-A176-4F15-BD23-C8455F42FF86}"
+          DTS:From="Package\SEQC Post Load Process\SQL Update Table Execution"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQC Post Load Process\SQL Update Pkg Execution" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQC Pre Load Process"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{5269C655-4431-4CE0-92E9-0C2041417855}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQC Pre Load Process">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="Disable">@[$Project::DisableLogging]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="DisableEventHandlers">@[$Project::DisableLogging]</DTS:PropertyExpression>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Pre Load Process\SQL Get Pkg Execution Key"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{E62DDC30-BD8A-4A90-9E12-7EDB0EC4E597}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Get Pkg Execution Key"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="DECLARE @Now datetime&#xA;&#x9;,@BatchId INT&#xA;SELECT @Now = GETDATE()&#xA;SELECT @BatchId = NULLIF(?,-1)&#xA;&#xA;EXEC [Audit].[PkgExecutionInsert]&#xA;@BatchId = @BatchId   -- int&#xA;,@PkgName=?   -- varchar(50)&#xA;, @PkgGUID=?   -- uniqueidentifier&#xA;, @PkgVersionGUID=?  -- uniqueidentifier&#xA;, @PkgVersionMajor=?  -- smallint&#xA;, @PkgVersionMinor=?  -- smallint&#xA;, @PkgVersionBuild=?  -- int&#xA;, @ParentPkgExecutionKey=? -- int&#xA;, @Status='Running'  -- varchar(25)&#xA;,@PackageBegin=@Now  -- Datetime&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::PkgExecutionKey" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="$Package::ParentBatchExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="72"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::VersionGUID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="72"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::VersionMajor"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::VersionMinor"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="System::VersionBuild"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="7"
+                SQLTask:DtsVariableName="$Package::ParentPkgExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Pre Load Process\SQL Get Table Execution Key"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D0D2D74C-C255-42C4-BB95-0ECBA4BFB8F1}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Get Table Execution Key"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="declare&#x9;@Now&#x9;datetime&#xA;set&#x9;@Now&#x9;= GETDATE()&#xA;&#xA;exec [Audit].[TableExecutionInsert]&#xA;@PkgExecutionKey=?&#x9;--&#x9;int&#xA;, @SchemaName=?&#x9;--&#x9;varchar(100)&#xA;, @PkgName=?&#x9;&#x9;--&#x9;varchar(100)&#xA;, @TableInitialRowCnt=?&#x9;--&#x9;int&#xA;, @ExecStartDT=@Now&#x9;--&#x9;datetime&#xA;, @Status='Running'&#x9;--&#x9;varchar(25)&#xA;, @LoadStartDT=?&#x9;&#x9;--&#x9;datetime&#xA;, @LoadStopDT=?&#x9;&#x9;--&#x9;datetime&#xA;, @LoadType=?&#x9;&#x9;--&#x9;varchar(20)"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::TableExecutionKey" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PkgExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::DMSchema"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::TableInitialRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="User::LoadStartDT"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="User::LoadStopDT"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="User::LoadType"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Pre Load Process\SQL Get Table Initial Row Count"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5E5919FC-EEFA-4874-B339-DA0CC0605F15}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Get Table Initial Row Count"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{EFCD1019-DCB4-4ADD-BF91-C8208654A946}"
+              SQLTask:SqlStatementSource="declare&#x9;@DWSchema&#x9;varchar(100)&#xA;&#x9;, @PkgName&#x9;varchar(100)&#xA;&#x9;, @SQL&#x9;&#x9;varchar(2000)&#xA;&#xA;select&#x9;@DWSchema&#x9;=&#x9;?&#xA;&#x9;, @PkgName&#x9;=&#x9;?&#xA;&#xA;set&#x9;@SQL&#x9;= 'select count(*) from ' + @DWSchema + '.' + @PkgName&#xA;&#xA;exec (@SQL)&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::TableInitialRowCnt" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::DMSchema"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC Pre Load Process.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{30953122-E132-435B-A141-B20E74585B8B}"
+          DTS:From="Package\SEQC Pre Load Process\SQL Get Pkg Execution Key"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQC Pre Load Process\SQL Get Table Initial Row Count" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC Pre Load Process.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{A4E303F6-8A69-4ECD-AECB-DFE3298C7726}"
+          DTS:From="Package\SEQC Pre Load Process\SQL Get Table Initial Row Count"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQC Pre Load Process\SQL Get Table Execution Key" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{AC708D4A-9EA5-409A-A031-FB32D27851DE}"
+      DTS:From="Package\SEQC Pre Load Process"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\FELC Get Files for Revenue_Budget" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{F00E0E1E-F58E-49A4-AF3E-DA7E095BFC30}"
+      DTS:From="Package\FELC Get Files for Revenue_Budget"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\SEQC Post Load Process" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{6F3A3A81-7AB9-454B-9C14-F7A8DAD3A255}"
+      DTS:EventID="445645532"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{D70C32E3-739A-440C-B8FB-4CB60B0396ED}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:PropertyExpression
+        DTS:Name="Disable">@[$Project::DisableLogging]</DTS:PropertyExpression>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SQL Log Error"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B88594C4-88B8-43F8-B908-A33496B32437}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Log Error"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="declare @Now datetime&#xA; ,@BatchId INT&#xA;SELECT @Now = GETDATE()&#xA;SELECT @BatchID = NULLIF(?,-1)&#xA;&#xA;exec [Audit].[PkgExecutionErrorInsert]&#xA;@PkgExecutionKey=? -- int&#xA;, @BatchKey = @BatchID   -- int&#xA;, @WasCanceled=? -- bit&#xA;, @ErrorCode=?  -- int&#xA;, @ErrorDescription=? -- varchar(max)&#xA;, @IsPropagated=?  -- bit&#xA;, @SourceDescription=? -- varchar(max)&#xA;, @SourceID=?  -- varchar(100)&#xA;, @SourceName=?  -- varchar(max)&#xA;, @ErrorDT=@Now  -- datetime&#xA;, @TableExecutionKey=? -- int" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="$Package::ParentBatchExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::PkgExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::Cancel"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::Propagate"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="System::SourceDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="7"
+                SQLTask:DtsVariableName="System::SourceID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="8"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="9"
+                SQLTask:DtsVariableName="User::TableExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SQL Update Pkg Execution"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0024CAF1-BEF8-4E38-B10C-F0364A7D3179}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Pkg Execution"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="declare @Now datetime&#xA;set  @Now = GETDATE()&#xA;&#xA;exec [Audit].[PkgExecutionUpdate]&#xA;@PkgExecutionKey=? -- int&#xA;, @ExecStopDT=@Now -- datetime&#xA;, @Status='Failed' -- varchar(25)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PkgExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SQL Update Table Execution"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{06C1E2F5-3B45-4737-B4A2-018841899AFC}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Table Execution"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="declare @Now datetime&#xA;set  @Now = GETDATE()&#xA;&#xA;exec [Audit].[TableExecutionUpdate]&#xA;@TableExecutionKey=? -- int&#xA;, @TableFinalRowCnt=? -- int&#xA;, @ExtractSourceRowCnt=? -- int&#xA;, @ExtractTargetRowCnt=? -- int&#xA;, @UnchangedRowCnt=? -- int&#xA;, @NewRowCnt=?  -- int&#xA;, @DeletedRowCnt=? -- int&#xA;, @UpdatedSCD1RowCnt=? -- int&#xA;, @ExpiredSCD2RowCnt=? -- int&#xA;, @NewSCD2RowCnt=? -- int&#xA;, @InvalidRowCnt=? -- int&#xA;, @ErrorRowCnt=?  -- int&#xA;, @ExecStopDT=@Now -- datetime&#xA;, @Status='Failed' -- varchar(25)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::TableExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::TableFinalRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::ExtractSourceRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::ExtractTargetRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="User::UnchangedRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="User::NewRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="User::DeletedRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="7"
+                SQLTask:DtsVariableName="User::UpdatedSCD1RowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="8"
+                SQLTask:DtsVariableName="User::ExpiredSCD2RowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="9"
+                SQLTask:DtsVariableName="User::NewSCD2RowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="10"
+                SQLTask:DtsVariableName="User::InvalidRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="11"
+                SQLTask:DtsVariableName="User::ErrorRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint 1 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{A92BD296-ADCC-4437-873E-4235E8613267}"
+          DTS:From="Package.EventHandlers[OnError]\SQL Update Table Execution"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1 1"
+          DTS:To="Package.EventHandlers[OnError]\SQL Update Pkg Execution" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{2FAC2103-490C-4A7B-B5BE-8E205A956EC5}"
+          DTS:From="Package.EventHandlers[OnError]\SQL Log Error"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package.EventHandlers[OnError]\SQL Update Table Execution" />
+      </DTS:PrecedenceConstraints>
+    </DTS:EventHandler>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnVariableValueChanged]"
+      DTS:CreationName="OnVariableValueChanged"
+      DTS:DTSID="{B77B4440-9FFE-4E9B-90AF-0F657D18B43F}"
+      DTS:EventID="444812424"
+      DTS:EventName="OnVariableValueChanged"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{48555CC0-B36B-45B8-9176-33707D88B292}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:PropertyExpression
+        DTS:Name="Disable">@[$Project::DisableLogging]</DTS:PropertyExpression>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnVariableValueChanged]\SQL Log Variable Value Change"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{979019C8-C1E2-4862-A23E-EBB1CC008D34}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Log Variable Value Change"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="DECLARE @Now DATETIME&#xA;&#xA;SET @Now = GETDATE()&#xA;&#xA;EXEC [Audit].[VariableValueChangeInsert] @PkgExecutionKey = ? --&#x9;int&#xA;&#x9;,@VariableName = ? --&#x9;varchar(100)&#xA;&#x9;,@VariableValue = ? --&#x9;varchar(max)&#xA;&#x9;,@VariableChangeDT = @Now --&#x9;datetime&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PkgExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="20"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::VariableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::VariableValue"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151.333333333334,41.3333333333334"
+          Id="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget"
+          TopLeft="35.2499999068675,139.557025415883" />
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\FELC Get Files for Revenue_Budget\FST Copy File to Archive for Revenue_Budget"
+          TopLeft="30.4687406797893,237.043865309253" />
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\FELC Get Files for Revenue_Budget\FST Delete File for Revenue_Budget"
+          TopLeft="59.6874902443961,338.307025110017" />
+        <NodeLayout
+          Size="176,42.6666666666667"
+          Id="Package\FELC Get Files for Revenue_Budget\SQL Truncate Table"
+          TopLeft="43.9583237872774,23.8333376154565" />
+        <EdgeLayout
+          Id="Package\FELC Get Files for Revenue_Budget.PrecedenceConstraints[Constraint]"
+          TopLeft="111.026036959995,180.890358749216">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.1535065600364"
+              Start="0,0"
+              End="0,48.6535065600364">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.6535065600364" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FELC Get Files for Revenue_Budget.PrecedenceConstraints[Constraint 1]"
+          TopLeft="111.135407346456,279.71053197592">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.8854162312734,58.5964931340977"
+              Start="0,0"
+              End="33.8854162312734,51.0964931340977">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.2982465670489" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.2982465670489"
+                    Point2="0,29.2982465670489"
+                    Point3="4,29.2982465670489" />
+                  <mssgle:LineSegment
+                    End="29.8854162312734,29.2982465670489" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.8854162312734,29.2982465670489"
+                    Point2="33.8854162312734,29.2982465670489"
+                    Point3="33.8854162312734,33.2982465670489" />
+                  <mssgle:LineSegment
+                    End="33.8854162312734,51.0964931340977" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FELC Get Files for Revenue_Budget.PrecedenceConstraints[Constraint 2]"
+          TopLeft="131.958323787277,66.5000042821232">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-21.0416572137433,73.05702113376"
+              Start="0,0"
+              End="-21.0416572137433,65.55702113376">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.52851056688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.52851056688"
+                    Point2="0,36.52851056688"
+                    Point3="-4,36.52851056688" />
+                  <mssgle:LineSegment
+                    End="-17.0416572137433,36.52851056688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17.0416572137433,36.52851056688"
+                    Point2="-21.0416572137433,36.52851056688"
+                    Point3="-21.0416572137433,40.52851056688" />
+                  <mssgle:LineSegment
+                    End="-21.0416572137433,65.55702113376" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="270.666666666667,436"
+          Size="270.666666666667,478.666666666667"
+          Id="Package\FELC Get Files for Revenue_Budget"
+          TopLeft="596.87499110587,269.100878368152" />
+        <NodeLayout
+          Size="215.333333333334,41.3333333333334"
+          Id="Package\SEQC Post Load Process\SQL Get Table Final Row Cnt"
+          TopLeft="75.2187500116418,16" />
+        <NodeLayout
+          Size="204,41.3333333333334"
+          Id="Package\SEQC Post Load Process\SQL Update Pkg Execution"
+          TopLeft="86,186" />
+        <NodeLayout
+          Size="217.333333333334,42.6666666666667"
+          Id="Package\SEQC Post Load Process\SQL Update Table Execution"
+          TopLeft="78,101" />
+        <EdgeLayout
+          Id="Package\SEQC Post Load Process.PrecedenceConstraints[Constraint]"
+          TopLeft="184.776041672488,57.3333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.6666666666667"
+              Start="0,0"
+              End="0,36.1666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.1666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC Post Load Process.PrecedenceConstraints[Constraint 1]"
+          TopLeft="187.333333333333,143.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.3333333333333"
+              Start="0,0"
+              End="0,34.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="358.666666666667,261.333333333334"
+          Size="358.666666666667,304"
+          Id="Package\SEQC Post Load Process"
+          TopLeft="918.124999953434,254.302631434064" />
+        <NodeLayout
+          Size="206.666666666667,41.3333333333334"
+          Id="Package\SEQC Pre Load Process\SQL Get Pkg Execution Key"
+          TopLeft="132.241071302425,13.8414829171082" />
+        <NodeLayout
+          Size="163.333333333334,42.6666666666667"
+          Id="Package\SEQC Pre Load Process\SQL Get Table Execution Key"
+          TopLeft="156.812499883585,196.229718202646" />
+        <NodeLayout
+          Size="231.333333333334,41.3333333333334"
+          Id="Package\SEQC Pre Load Process\SQL Get Table Initial Row Count"
+          TopLeft="133.031250167704,101.409748880327" />
+        <EdgeLayout
+          Id="Package\SEQC Pre Load Process.PrecedenceConstraints[Constraint 1]"
+          TopLeft="235.574404635758,55.1748162504414">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.1235121986129,46.2349326298857"
+              Start="0,0"
+              End="13.1235121986129,38.7349326298857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.1174663149428" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.1174663149428"
+                    Point2="0,23.1174663149428"
+                    Point3="4,23.1174663149428" />
+                  <mssgle:LineSegment
+                    End="9.1235121986129,23.1174663149428" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.1235121986129,23.1174663149428"
+                    Point2="13.1235121986129,23.1174663149428"
+                    Point3="13.1235121986129,27.1174663149428" />
+                  <mssgle:LineSegment
+                    End="13.1235121986129,38.7349326298857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC Pre Load Process.PrecedenceConstraints[Constraint 2]"
+          TopLeft="248.697916834371,142.743082213661">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.2187502841196,53.4866359889857"
+              Start="0,0"
+              End="-10.2187502841196,45.9866359889857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.7433179944928" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.7433179944928"
+                    Point2="0,26.7433179944928"
+                    Point3="-4,26.7433179944928" />
+                  <mssgle:LineSegment
+                    End="-6.21875028411955,26.7433179944928" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.21875028411955,26.7433179944928"
+                    Point2="-10.2187502841196,26.7433179944928"
+                    Point3="-10.2187502841196,30.7433179944928" />
+                  <mssgle:LineSegment
+                    End="-10.2187502841196,45.9866359889857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Update the User::DMSchema variable&#xA;to match the source table schema."
+          ParentId="Package\SEQC Pre Load Process"
+          FontInfo="{assembly:Null}"
+          Size="225.333333333334,56"
+          Id="81f034e5-147a-4771-b8bd-364de4e39bdd"
+          TopLeft="17.5937498719432,54.9473652014111" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="455.333333333334,263.333333333334"
+          Size="455.333333333334,305.333333333334"
+          Id="Package\SEQC Pre Load Process"
+          TopLeft="89,256" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="544.333333333333,409">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="52.5416577725367,99.4342117014853"
+              Start="0,0"
+              End="45.0416577725367,99.4342117014853">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="22.2708288862684,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.2708288862684,0"
+                    Point2="26.2708288862684,0"
+                    Point3="26.2708288862684,4" />
+                  <mssgle:LineSegment
+                    End="26.2708288862684,95.4342117014853" />
+                  <mssgle:CubicBezierSegment
+                    Point1="26.2708288862684,95.4342117014853"
+                    Point2="26.2708288862684,99.4342117014853"
+                    Point3="30.2708288862684,99.4342117014853" />
+                  <mssgle:LineSegment
+                    End="45.0416577725367,99.4342117014853" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="866.87499110587,508.434211701485">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="51.250008847564,-102.131580267421"
+              Start="0,0"
+              End="43.750008847564,-102.131580267421">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="21.625004423782,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.625004423782,0"
+                    Point2="25.625004423782,0"
+                    Point3="25.625004423782,-4" />
+                  <mssgle:LineSegment
+                    End="25.625004423782,-98.1315802674213" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.625004423782,-98.1315802674213"
+                    Point2="25.625004423782,-102.131580267421"
+                    Point3="29.625004423782,-102.131580267421" />
+                  <mssgle:LineSegment
+                    End="43.750008847564,-102.131580267421" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Expressions on the Pre and Post Load Process can disable the containers&#xA;and disable the event handlers based on $Project::DisableLogging"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="410.666666666667,56"
+          Id="eb4cc37a-b064-4eb6-ac09-9ada4bf542d8"
+          TopLeft="111.906249941792,589.960522983461" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="144.666666666667,41.3333333333334"
+          Id="Package.EventHandlers[OnError]\SQL Log Error"
+          TopLeft="43.5,5.49999999999996" />
+        <NodeLayout
+          Size="220.666666666667,41.3333333333334"
+          Id="Package.EventHandlers[OnError]\SQL Update Pkg Execution"
+          TopLeft="5.50000000000003,210.166666666666" />
+        <NodeLayout
+          Size="216.666666666667,43.3333333333334"
+          Id="Package.EventHandlers[OnError]\SQL Update Table Execution"
+          TopLeft="7.50000000000003,106.833333333333" />
+        <EdgeLayout
+          Id="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint 1 1]"
+          TopLeft="115.833333333333,150.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint 2]"
+          TopLeft="115.833333333333,46.8333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnVariableValueChanged]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="226.666666666667,42"
+          Id="Package.EventHandlers[OnVariableValueChanged]\SQL Log Variable Value Change"
+          TopLeft="179,75" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="132,42.4"
+          Id="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\Row Count"
+          TopLeft="91.8749986309559,145.736844848398" />
+        <NodeLayout
+          Size="181.6,42.4"
+          Id="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data"
+          TopLeft="95.6249985750765,258.631583815466" />
+        <NodeLayout
+          Size="137.6,42.4"
+          Id="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\FF Get Data"
+          TopLeft="120.624998202547,43.7894745084387" />
+        <EdgeLayout
+          Id="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget.Paths[Row Count Output 1]"
+          TopLeft="157.874998630956,188.403511515064">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28.4166666107873,70.228072300402"
+              Start="0,0"
+              End="28.4166666107873,62.728072300402">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.114036150201" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.114036150201"
+                    Point2="0,35.114036150201"
+                    Point3="4,35.114036150201" />
+                  <mssgle:LineSegment
+                    End="24.4166666107873,35.114036150201" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.4166666107873,35.114036150201"
+                    Point2="28.4166666107873,35.114036150201"
+                    Point3="28.4166666107873,39.114036150201" />
+                  <mssgle:LineSegment
+                    End="28.4166666107873,62.728072300402" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget.Paths[Flat File Source Output]"
+          TopLeft="192.624998202547,86.4561411751054">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-34.7499995715916,59.2807036732924"
+              Start="0,0"
+              End="-34.7499995715916,51.7807036732924">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.6403518366462" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.6403518366462"
+                    Point2="0,29.6403518366462"
+                    Point3="-4,29.6403518366462" />
+                  <mssgle:LineSegment
+                    End="-30.7499995715916,29.6403518366462" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-30.7499995715916,29.6403518366462"
+                    Point2="-34.7499995715916,29.6403518366462"
+                    Point3="-34.7499995715916,33.6403518366462" />
+                  <mssgle:LineSegment
+                    End="-34.7499995715916,51.7807036732924" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\FELC Get Files for Revenue_Budget\DF Load File for Revenue_Budget\OLE_Dest Load Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

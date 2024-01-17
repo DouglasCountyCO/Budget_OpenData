@@ -1,0 +1,1398 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/23/2015 10:23:34 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DAWABI-JG"
+  DTS:CreatorName="DAWABI-JG\Jack"
+  DTS:Description="SSIS Master Template - Created by Datalere - www.Datalere.com"
+  DTS:DTSID="{489A1491-9CF6-429C-949E-59869ED5C880}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="01-Master"
+  DTS:PackageType="5"
+  DTS:VersionBuild="406"
+  DTS:VersionGUID="{FB4B6C9C-DC1C-4CD3-B260-46E93E3AC024}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{596FB43D-C129-4228-A72D-E5EE2718543F}"
+      DTS:ObjectName="ParentPkgExecutionKey">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BCF7E46A-F152-4AC5-80A5-9BCDF1D2DC19}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BatchExecutionKey">
+      <DTS:VariableValue
+        DTS:DataType="3">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{72A15110-35C2-4977-BCD2-30705F893564}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DeletedRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EE4A39EF-A7B8-4608-91EC-26D43CBF7389}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DMSchema"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="8">dbo</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{258A3C03-7A33-4F86-9469-6CAAE873964E}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Here are the stats for the ETL run on: &quot;  +&#xA; &#xA;((DT_STR,40,1252)(DT_DBDATE)GETDATE()) + &#xA;&#xA;&quot;&lt;br&gt;&lt;br&gt;Load Start Date: &quot; + &#xA;(DT_STR,40,1252)(DT_DBDATE)@[User::LoadStartDT]  +&#xA;&#xA;&quot;&lt;br&gt;&lt;br&gt; Package run statistics:&lt;br&gt;&lt;br&gt;&quot; +  @[User::EmailPckgInfo]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="EmailBodyText">
+      <DTS:VariableValue
+        DTS:DataType="8">Here are the stats for the ETL run on: 2024-01-16&lt;br&gt;&lt;br&gt;Load Start Date: 1900-01-01&lt;br&gt;&lt;br&gt; Package run statistics:&lt;br&gt;&lt;br&gt;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DB99E252-622A-41C2-B04F-72540D13E286}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Here is the Error Information for the ETL run on: &quot;  + &#xA;((DT_STR,40,1252)(DT_DBDATE)GETDATE()) + &#xA;&#xA;&quot;&lt;br&gt;&lt;br&gt;Load Start Date: &quot; + &#xA;(DT_STR,40,1252)(DT_DBDATE)@[User::LoadStartDT]  + &#xA;&#xA;&quot;&lt;br&gt;&lt;br&gt;Error Information:&lt;br&gt;&lt;br&gt;&quot; + @[User::EmailErrorInfo]  &#xA; + &#xA;&#xA;&quot;&lt;br&gt;&lt;br&gt;Package Run Statistics:&lt;br&gt;&lt;br&gt;&quot; + &#xA;&#xA; @[User::EmailPckgInfo]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="EmailErrorBodyText">
+      <DTS:VariableValue
+        DTS:DataType="8">Here is the Error Information for the ETL run on: 2024-01-16&lt;br&gt;&lt;br&gt;Load Start Date: 1900-01-01&lt;br&gt;&lt;br&gt;Error Information:&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Package Run Statistics:&lt;br&gt;&lt;br&gt;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A999B133-9B6F-4A85-B0D8-23F08C55AD12}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="EmailErrorInfo">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{03209798-70CD-4B56-8C99-9F798510E058}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="EmailErrorSubject">
+      <DTS:VariableValue
+        DTS:DataType="8">ETL Load Failed</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8572B25F-CA46-41F6-934F-9D7A66D533FD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="EmailPckgInfo">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FE120C3E-2859-4024-960D-566D31792A9E}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;ETL Post Load Stats&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="EmailSubject">
+      <DTS:VariableValue
+        DTS:DataType="8">ETL Post Load Stats</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{974755C5-CC86-4CB0-B7CC-CC13130D4F2A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ErrorRecordCounts">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D3C2E9B7-0AC4-4F71-BFEC-08ADA909E479}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ErrorRecordCountsXML">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B98B463B-5124-4765-807F-35032E97C717}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ErrorRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D8095F89-0FAA-4D4D-B26E-600C5D91A86A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExpiredSCD2RowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4EB19842-9553-4B20-AA7A-B4E5BEF138F9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtractSourceRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6378853A-CFDE-456F-9BFE-164C4533C885}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtractTargetRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BAE68689-BA14-4350-A52E-806A5553B6F0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="InvalidRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9D055A08-BC5C-49F2-B9C1-B32013895473}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoadCheckStatus">
+      <DTS:VariableValue
+        DTS:DataType="8">LoadNow</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CB4282DC-B4BE-4617-9933-546390AC5CA2}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoadStartDT">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1900</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E2C1DFB6-7FB1-48A7-AD9E-FA4FDC5B877C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoadStopDT">
+      <DTS:VariableValue
+        DTS:DataType="7">12/31/2099</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1F96CB17-E3D9-416B-A4A9-487B6370C8A4}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::LoadType]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoadType">
+      <DTS:VariableValue
+        DTS:DataType="8">Full</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FE4AE7A7-A8A8-4B28-A5E7-6F08DCFCC448}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NewRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DB461B56-CDDD-4009-8395-770F67872C10}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NewSCD2RowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6FC8A7BF-2260-4417-95AD-A1F89CD769C8}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::ParentPkgExecutionKey]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ParentPkgExecutionKey">
+      <DTS:VariableValue
+        DTS:DataType="3">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D53A6FA3-FBE8-4550-911D-958AD41BF4CD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PkgExecutionKey">
+      <DTS:VariableValue
+        DTS:DataType="3">1076</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{12D0DFEB-B118-41CD-BB75-127A74C56D32}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PkgRunTime">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EDFA0BFA-90DF-4A40-B343-A80A52E3C31D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_DBTIMESTAMP) @[System::StartTime]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="PkgStartTime">
+      <DTS:VariableValue
+        DTS:DataType="7">1/16/2024 10:22:09 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{514EFC4D-719F-4640-982D-AD8D9EF3CCF4}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT * FROM [Audit].[vwPackageErrorInfo]&#xA;WHERE PackageExecutionKey = &quot; + &#xA;(DT_STR,25,1252)@[User::PkgExecutionKey]  + &#xA;&quot;  or ParentPackageExeKey = &quot; + &#xA;(DT_STR,25,1252)@[$Package::ParentPkgExecutionKey]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQLPckgErrorQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT * FROM [Audit].[vwPackageErrorInfo]
+WHERE PackageExecutionKey = 1076  or ParentPackageExeKey = -1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{815B4031-2D88-4690-BDB2-F30D9D36E8F0}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT * FROM [Audit].[vwPackageExecInfo] &#xA;WHERE PackageExecutionKey = &quot; + &#xA;(DT_STR,25,1252)@[User::PkgExecutionKey] + &#xA;&quot;  or ParentExecutionKey = &quot; + &#xA;(DT_STR,25,1252) @[$Package::ParentPkgExecutionKey]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQLPckgExecQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT * FROM [Audit].[vwPackageExecInfo] 
+WHERE PackageExecutionKey = 1076  or ParentExecutionKey = -1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8F04299D-1B98-4718-A3D2-7FB43ADA89C0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableExecutionKey">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E847A29F-78AC-4866-994B-C184BC581C99}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableFinalRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FE730768-91D1-4D01-954E-DEDE2C49FFA0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableInitialRowCnt"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F2ECFF37-C1E1-4C3E-B464-F4B20FAD434A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="UnchangedRowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0FE4E51A-A146-4EE2-BBA7-6889418B70D5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="UpdatedSCD1RowCnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQC Post Load Process"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{BC0202A9-C3B8-4129-9123-3E5DF695FB28}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQC Post Load Process">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="Disable">@[$Project::DisableLogging]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="DisableEventHandlers">@[$Project::DisableLogging]</DTS:PropertyExpression>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Post Load Process\SQL Get Pckg Exec Info"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{35A3F333-6186-48BB-A594-5DDC27762803}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Get Pckg Exec Info"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="DECLARE @HTML varchar(4000) = NULL&#xA;&#xA;EXEC [Utility].[uspQueryToHTMLTable]&#xA;@Query = ?&#xA;,@OrderBy = NULL&#xA;,@HTML = @HTML OUTPUT&#xA;&#xA;SELECT @HTML"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::EmailPckgInfo" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::SQLPckgExecQuery"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Post Load Process\SQL Update Batch Execution"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{41D6B4AE-8AB8-42EF-8A4A-4D531E304269}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Batch Execution"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="DECLARE @Now datetime&#xA;SELECT @Now = GETDATE()&#xA;&#xA;EXEC  [Audit].[BatchExecutionUpdate]&#xA;@BatchKey = ?&#xA;,@BatchStatus = 'Succeeded'&#xA;,@BatchEnd = @Now" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::BatchExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Post Load Process\SQL Update Pkg Execution"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{6D3A0FDF-4272-413E-9BA4-29E4ED97844A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Pkg Execution"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="declare @Now&#x9;datetime&#xA;set&#x9;&#x9;@Now&#x9;= GETDATE()&#xA;&#xA;exec [Audit].[PkgExecutionUpdate]&#xA;@PkgExecutionKey=?&#x9;--&#x9;int&#xA;, @ExecStopDT=@Now&#x9;--&#x9;datetime&#xA;, @Status='Succeeded'&#x9;--&#x9;varchar(25)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PkgExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC Post Load Process.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{8BA8B5B9-CFEB-43C2-9F23-051685D3CE1A}"
+          DTS:From="Package\SEQC Post Load Process\SQL Update Pkg Execution"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQC Post Load Process\SQL Update Batch Execution" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC Post Load Process.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{D2661845-1A23-4F35-9AAD-670B15A321F6}"
+          DTS:From="Package\SEQC Post Load Process\SQL Update Batch Execution"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQC Post Load Process\SQL Get Pckg Exec Info" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQC Pre Load Process"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{FFCB1728-9D28-4002-A259-9B92F82637A2}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQC Pre Load Process">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="Disable">@[$Project::DisableLogging]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="DisableEventHandlers">@[$Project::DisableLogging]</DTS:PropertyExpression>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Pre Load Process\SQL Get BatchKey"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{446F63E1-A720-492E-BFB7-781A0E4A53A5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Get BatchKey"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="Disable">@[User::BatchExecutionKey]==-1?false:true</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="DECLARE @Now datetime&#xA;SELECT @Now = GETDATE()&#xA;&#xA;EXEC  [Audit].[BatchExecutionInsert]&#xA;@AgentJobName = ?&#xA;,@BatchLoadType = ?&#xA;,@BatchBegin = @Now&#xA;,@BatchStatus = 'Running'&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::BatchExecutionKey" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="$Project::AgentJobName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="$Project::LoadType"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Pre Load Process\SQL Get Pkg Execution Key"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{6B84E90B-0ACE-43B1-BAFE-D5694D672B2E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Get Pkg Execution Key"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="DECLARE @Now datetime&#xA;SELECT @Now = GETDATE()&#xA;&#xA;exec [Audit].[PkgExecutionInsert]&#xA;@BatchId = ?&#x9;&#x9;&#x9;--&#x9;int&#xA;,@PkgName=?&#x9;&#x9;&#x9;--&#x9;varchar(50)&#xA;, @PkgGUID=?&#x9;&#x9;&#x9;--&#x9;uniqueidentifier&#xA;, @PkgVersionGUID=?&#x9;&#x9;--&#x9;uniqueidentifier&#xA;, @PkgVersionMajor=?&#x9;&#x9;--&#x9;smallint&#xA;, @PkgVersionMinor=?&#x9;&#x9;--&#x9;smallint&#xA;, @PkgVersionBuild=?&#x9;&#x9;--&#x9;int&#xA;, @ParentPkgExecutionKey=?&#x9;--&#x9;int&#xA;, @Status='Running'&#x9;&#x9;--&#x9;varchar(25)&#xA;,@PackageBegin=@Now&#x9;&#x9;-- Datetime&#xA;--, @PkgExecutionKey=? output&#x9;--&#x9;int output"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::PkgExecutionKey" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::BatchExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="72"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::VersionGUID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="72"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::VersionMajor"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::VersionMinor"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="System::VersionBuild"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="7"
+                SQLTask:DtsVariableName="User::ParentPkgExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC Pre Load Process.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{815FC9CA-6765-4647-AABC-59E21EF0F11C}"
+          DTS:From="Package\SEQC Pre Load Process\SQL Get BatchKey"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQC Pre Load Process\SQL Get Pkg Execution Key" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQC Run Packages"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{79C45344-5414-4DBA-A4BF-BDD892FD8D06}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQC Run Packages">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Run Packages\EP Capital_Budget"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{A79FA3F3-E892-4247-B023-C77F28B3DCC1}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EP Capital_Budget"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Capital_Budget.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>ParentBatchExecutionKey</ParameterName>
+                <BindedVariableOrParameterName>User::BatchExecutionKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ParentPkgExecutionKey</ParameterName>
+                <BindedVariableOrParameterName>User::PkgExecutionKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>LoadType</ParameterName>
+                <BindedVariableOrParameterName>$Project::LoadType</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Run Packages\EP Expenditures"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{8f7d63db-bfd1-4ec5-a230-d22605dc79d9}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EP Expenditures"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Expenditures.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>ParentBatchExecutionKey</ParameterName>
+                <BindedVariableOrParameterName>User::BatchExecutionKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ParentPkgExecutionKey</ParameterName>
+                <BindedVariableOrParameterName>User::PkgExecutionKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>LoadType</ParameterName>
+                <BindedVariableOrParameterName>$Project::LoadType</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Run Packages\EP Fund_Balance"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{db2bbca1-27bd-4866-95bd-affcf8c2c670}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EP Fund_Balance"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Fund_Balance.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>ParentBatchExecutionKey</ParameterName>
+                <BindedVariableOrParameterName>User::BatchExecutionKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ParentPkgExecutionKey</ParameterName>
+                <BindedVariableOrParameterName>User::PkgExecutionKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>LoadType</ParameterName>
+                <BindedVariableOrParameterName>$Project::LoadType</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Run Packages\EP operating_budget"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{95b22d1c-11c2-4a39-a48a-10d80334310e}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EP operating_budget"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>operating_budget.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>ParentBatchExecutionKey</ParameterName>
+                <BindedVariableOrParameterName>User::BatchExecutionKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ParentPkgExecutionKey</ParameterName>
+                <BindedVariableOrParameterName>User::PkgExecutionKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>LoadType</ParameterName>
+                <BindedVariableOrParameterName>$Project::LoadType</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC Run Packages\EP revenue_budget"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{0d4efce5-0c9e-4530-88b5-0b8e8d36d146}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EP revenue_budget"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>revenue_budget.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>ParentBatchExecutionKey</ParameterName>
+                <BindedVariableOrParameterName>User::BatchExecutionKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ParentPkgExecutionKey</ParameterName>
+                <BindedVariableOrParameterName>User::PkgExecutionKey</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>LoadType</ParameterName>
+                <BindedVariableOrParameterName>$Project::LoadType</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B0ED41D4-064D-4419-84C3-5FFF53A0E832}"
+      DTS:From="Package\SEQC Pre Load Process"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SEQC Run Packages" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{6FCCE99E-6D65-4930-8FA5-6D013C4368C9}"
+      DTS:From="Package\SEQC Run Packages"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SEQC Post Load Process" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{88A9D728-3094-47BF-B2CC-A2D473313611}"
+      DTS:EventID="445645532"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{40EDF24B-13C7-4D7B-AB85-ADBD948D8881}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SQL Log Error"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{ADAEBD31-5683-4CC6-9AB4-E3DCF44136A8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Log Error"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="declare&#x9;@Now&#x9;datetime&#xA;set&#x9;@Now&#x9;=&#x9;GETDATE()&#xA;&#xA;exec [Audit].[PkgExecutionErrorInsert]&#xA;@PkgExecutionKey=?&#x9;--&#x9;int&#xA;,@BatchKey = ?&#x9;&#x9;--&#x9;int&#xA;, @WasCanceled=?&#x9;--&#x9;bit&#xA;, @ErrorCode=?&#x9;&#x9;--&#x9;int&#xA;, @ErrorDescription=?&#x9;--&#x9;varchar(max)&#xA;, @IsPropagated=?&#x9;&#x9;--&#x9;bit&#xA;, @SourceDescription=?&#x9;--&#x9;varchar(max)&#xA;, @SourceID=?&#x9;&#x9;--&#x9;varchar(100)&#xA;, @SourceName=?&#x9;&#x9;--&#x9;varchar(max)&#xA;, @ErrorDT=@Now&#x9;&#x9;--&#x9;datetime&#xA;, @TableExecutionKey=?&#x9;--&#x9;int&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PkgExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::BatchExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::Cancel"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::Propagate"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="System::SourceDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="7"
+                SQLTask:DtsVariableName="System::SourceID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="8"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="9"
+                SQLTask:DtsVariableName="User::TableExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SQL Update Batch Execution"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5BB9FA13-A6DB-469D-AA83-E2A6C917C77B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Batch Execution"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="&#xA;declare @dt datetime = getdate()&#xA;&#xA;EXEC  [Audit].[BatchExecutionUpdate]&#xA;@BatchKey = ?&#xA;,@BatchStatus = 'Failed'&#xA;,@BatchEnd = @dt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::BatchExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SQL Update Pkg Execution"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{711CD108-F92B-475B-AF9D-09704FEB25FC}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Pkg Execution"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="declare @Now datetime&#xA;set  @Now = GETDATE()&#xA;&#xA;exec [Audit].[PkgExecutionUpdate]&#xA;@PkgExecutionKey=? -- int&#xA;, @ExecStopDT=@Now -- datetime&#xA;, @Status='Failed' -- varchar(25)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PkgExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SQL Update Table Execution"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1360E38D-0A7A-4C00-8E14-FEB248D81019}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Table Execution"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="declare @Now datetime&#xA;set  @Now = GETDATE()&#xA;&#xA;exec [Audit].[TableExecutionUpdate]&#xA;@TableExecutionKey=? -- int&#xA;, @TableFinalRowCnt=? -- int&#xA;, @ExtractSourceRowCnt=? -- int&#xA;, @ExtractTargetRowCnt=? -- int&#xA;, @UnchangedRowCnt=? -- int&#xA;, @NewRowCnt=?  -- int&#xA;, @DeletedRowCnt=? -- int&#xA;, @UpdatedSCD1RowCnt=? -- int&#xA;, @ExpiredSCD2RowCnt=? -- int&#xA;, @NewSCD2RowCnt=? -- int&#xA;, @InvalidRowCnt=? -- int&#xA;, @ErrorRowCnt=?  -- int&#xA;, @ExecStopDT=@Now -- datetime&#xA;, @Status='Failed' -- varchar(25)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::TableExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::TableFinalRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::ExtractSourceRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::ExtractTargetRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="User::UnchangedRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="User::NewRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="User::DeletedRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="7"
+                SQLTask:DtsVariableName="User::UpdatedSCD1RowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="8"
+                SQLTask:DtsVariableName="User::ExpiredSCD2RowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="9"
+                SQLTask:DtsVariableName="User::NewSCD2RowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="10"
+                SQLTask:DtsVariableName="User::InvalidRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="11"
+                SQLTask:DtsVariableName="User::ErrorRowCnt"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{C642AEAE-E518-4171-9408-71A0BC9CB1BF}"
+          DTS:From="Package.EventHandlers[OnError]\SQL Log Error"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package.EventHandlers[OnError]\SQL Update Table Execution" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{4F950DEF-9D84-4751-B728-FB84C390CCDC}"
+          DTS:From="Package.EventHandlers[OnError]\SQL Update Table Execution"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package.EventHandlers[OnError]\SQL Update Batch Execution" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{4A77562B-3932-4E2C-9886-3FE010A24110}"
+          DTS:From="Package.EventHandlers[OnError]\SQL Update Batch Execution"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package.EventHandlers[OnError]\SQL Update Pkg Execution" />
+      </DTS:PrecedenceConstraints>
+    </DTS:EventHandler>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnVariableValueChanged]"
+      DTS:CreationName="OnVariableValueChanged"
+      DTS:DTSID="{C40FA9D7-8596-454E-95C0-C5BDD21888FA}"
+      DTS:EventID="444812424"
+      DTS:EventName="OnVariableValueChanged"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{361C65B5-40AF-4BF9-8264-3E0CBD5D35BD}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnVariableValueChanged]\SQL Log Variable Value Change"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{83E2DBAE-C3EA-401B-B629-D5698019140F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Log Variable Value Change"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B3B1933E-8147-4815-A1C4-D009BAD86AD4}"
+              SQLTask:SqlStatementSource="DECLARE @Now DATETIME&#xA;&#xA;SET @Now = GETDATE()&#xA;&#xA;EXEC [Audit].[VariableValueChangeInsert] @PkgExecutionKey = ? --&#x9;int&#xA;&#x9;,@VariableName = ? --&#x9;varchar(100)&#xA;&#x9;,@VariableValue = ? --&#x9;varchar(max)&#xA;&#x9;,@VariableChangeDT = @Now --&#x9;datetime&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PkgExecutionKey"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="20"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::VariableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::VariableValue"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="190.666666666667,41.3333333333334"
+          Id="Package\SEQC Post Load Process\SQL Get Pckg Exec Info"
+          TopLeft="51,193" />
+        <NodeLayout
+          Size="212.666666666667,41.3333333333334"
+          Id="Package\SEQC Post Load Process\SQL Update Batch Execution"
+          TopLeft="35,112" />
+        <NodeLayout
+          Size="206.666666666667,41.3333333333334"
+          Id="Package\SEQC Post Load Process\SQL Update Pkg Execution"
+          TopLeft="41,32" />
+        <EdgeLayout
+          Id="Package\SEQC Post Load Process.PrecedenceConstraints[Constraint]"
+          TopLeft="142.75,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC Post Load Process.PrecedenceConstraints[Constraint 2]"
+          TopLeft="143.75,154">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="280,373.333333333334"
+          Size="280,416"
+          Id="Package\SEQC Post Load Process"
+          TopLeft="853.708339787396,41.7850826065068" />
+        <NodeLayout
+          Size="164,41.3333333333334"
+          Id="Package\SEQC Pre Load Process\SQL Get BatchKey"
+          TopLeft="43,41.8352941433863" />
+        <NodeLayout
+          Size="207.333333333334,41.3333333333334"
+          Id="Package\SEQC Pre Load Process\SQL Get Pkg Execution Key"
+          TopLeft="23.4285714188401,125.611764714462" />
+        <EdgeLayout
+          Id="Package\SEQC Pre Load Process.PrecedenceConstraints[Constraint]"
+          TopLeft="126.01428570942,83.4352941433863">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.1764705710759"
+              Start="0,0"
+              End="0,34.6764705710759">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.6764705710759" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="254.666666666667,224"
+          Size="254.666666666667,266.666666666667"
+          Id="Package\SEQC Pre Load Process"
+          TopLeft="21.7261925057129,79.0271881443064" />
+        <NodeLayout
+          Size="193.333333333334,45.3333333333334"
+          Id="Package\SEQC Run Packages\EP Capital_Budget"
+          TopLeft="40.8982220973248,36.2973704054502" />
+        <NodeLayout
+          Size="193.333333333334,45.3333333333334"
+          Id="Package\SEQC Run Packages\EP Expenditures"
+          TopLeft="34.9607221857999,111.832455581232" />
+        <NodeLayout
+          Size="193.333333333334,45.3333333333334"
+          Id="Package\SEQC Run Packages\EP Fund_Balance"
+          TopLeft="36.5232221625173,190.687720223381" />
+        <NodeLayout
+          Size="193.333333333334,45.3333333333334"
+          Id="Package\SEQC Run Packages\EP operating_budget"
+          TopLeft="265.273218753877,38.964033157033" />
+        <NodeLayout
+          Size="193.333333333334,45.3333333333334"
+          Id="Package\SEQC Run Packages\EP revenue_budget"
+          TopLeft="278.554468555971,120.24912438896" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="478.666666666667,262"
+          Size="478.666666666667,304.666666666667"
+          Id="Package\SEQC Run Packages"
+          TopLeft="330.446431930462,67.1721312556551" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="276.126192505713,215.899659699981">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54.3202394247491,0"
+              Start="0,0"
+              End="46.8202394247491,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="46.8202394247491,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="808.846431930462,219.572131255655">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44.8619078569341,30.2129513508517"
+              Start="0,0"
+              End="37.3619078569341,30.2129513508517">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="18.430953928467,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.430953928467,0"
+                    Point2="22.430953928467,0"
+                    Point3="22.430953928467,4" />
+                  <mssgle:LineSegment
+                    End="22.430953928467,26.2129513508517" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.430953928467,26.2129513508517"
+                    Point2="22.430953928467,30.2129513508517"
+                    Point3="26.430953928467,30.2129513508517" />
+                  <mssgle:LineSegment
+                    End="37.3619078569341,30.2129513508517" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="144.666666666667,41.3333333333334"
+          Id="Package.EventHandlers[OnError]\SQL Log Error"
+          TopLeft="172,34" />
+        <NodeLayout
+          Size="212.666666666667,41.3333333333334"
+          Id="Package.EventHandlers[OnError]\SQL Update Batch Execution"
+          TopLeft="133,188" />
+        <NodeLayout
+          Size="204,41.3333333333334"
+          Id="Package.EventHandlers[OnError]\SQL Update Pkg Execution"
+          TopLeft="136,263" />
+        <NodeLayout
+          Size="212.666666666667,41.3333333333334"
+          Id="Package.EventHandlers[OnError]\SQL Update Table Execution"
+          TopLeft="131,107" />
+        <EdgeLayout
+          Id="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint]"
+          TopLeft="241,76">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint 1]"
+          TopLeft="238.5,149">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint 2]"
+          TopLeft="238.75,230">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnVariableValueChanged]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="226.666666666667,42"
+          Id="Package.EventHandlers[OnVariableValueChanged]\SQL Log Variable Value Change"
+          TopLeft="63,72" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
